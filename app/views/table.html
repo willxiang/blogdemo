@@ -2,7 +2,7 @@
     <h1 class="blog-secondary-title">表格</h1>
     <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
 </div>
-To switch directories, type
+<!-- To switch directories, type
 <kbd>cd</kbd> followed by the name of the directory.
 <br> To edit settings, press
 <kbd>
@@ -16,8 +16,45 @@ To switch directories, type
 <var>b</var>
 <p>
     <samp>This text is meant to be treated as sample output from a computer program.</samp>
-</p>
-<div class="container" ng-controller="TableCtrl">
+</p> -->
+<div class="container">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">编辑数据</h3>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="FirstNameTextBox{{$index+1}}">FirstName</label>
+                <input type="text" class="form-control" id="FirstNameTextBox{{$index+1}}" ng-model="data.FirstName">
+            </div>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="LastNameTextBox{{$index+1}}">LastName</label>
+                <input type="text" class="form-control" id="LastNameTextBox{{$index+1}}" ng-model="data.LastName">
+            </div>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="UserNameTextBox{{$index+1}}">UserName</label>
+                <input type="text" class="form-control" id="UserNameTextBox{{$index+1}}" ng-model="data.UserName">
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+    <!-- <button type="button" class="btn btn-default" ng-click="open()">Open me!</button> -->
+    <!--     <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
+    <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>
+    <button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button> -->
+    <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+    <!-- <a href="javascript:;" ng-click="showModal()" class="btn btn-default">测试按钮</a> -->
     <table class="table table-hover">
         <tbody>
             <th>#</th>
@@ -31,7 +68,8 @@ To switch directories, type
                 <td ng-bind="item.LastName"></td>
                 <td ng-bind="item.UserName"></td>
                 <td>
-                    <button type="button" class="btn btn-default">Button</button>
+                    <!-- <button type="button" data-toggle="modal" data-target="#popwindow" class="btn btn-default">Button</button> -->
+                    <a class="btn btn-default" data-toggle="modal" ng-click="open(item)">编辑</a>
                 </td>
             </tr>
         </tbody>

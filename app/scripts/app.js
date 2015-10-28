@@ -15,7 +15,8 @@ angular
         'ngResource',
         'ngRoute',
         'ngSanitize',
-        'ngTouch'
+        'ngTouch',
+        'ui.bootstrap'
     ])
     .config(function($routeProvider) {
         $routeProvider
@@ -38,6 +39,11 @@ angular
                 templateUrl: 'views/table.html',
                 controller: 'TableCtrl',
                 controllerAs: 'table'
+            })
+            .when('/modal', {
+                templateUrl: 'views/modal.html',
+                controller: 'ModalCtrl',
+                controllerAs: 'modal'
             })
             .otherwise({
                 redirectTo: '/'
