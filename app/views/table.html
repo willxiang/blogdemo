@@ -1,0 +1,35 @@
+<div class="blog-header">
+    <h1 class="blog-secondary-title">表格</h1>
+    <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+</div>
+To switch directories, type
+<kbd>cd</kbd> followed by the name of the directory.
+<br> To edit settings, press
+<kbd>
+    <kbd>ctrl</kbd> +
+    <kbd>,</kbd>
+</kbd>
+<p></p>
+<var>y</var> =
+<var>m</var>
+<var>x</var> +
+<var>b</var>
+<p>
+    <samp>This text is meant to be treated as sample output from a computer program.</samp>
+</p>
+<div class="container" ng-controller="TableCtrl">
+    <table class="table table-striped">
+        <tbody>
+            <th>#</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>UserName</th>
+            <tr ng-repeat="item in dataSource">
+                <td ng-bind="$index+1"></td>
+                <td ng-bind="item.FirstName"></td>
+                <td ng-bind="item.LastName"></td>
+                <td ng-bind="item.UserName"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
