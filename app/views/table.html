@@ -18,17 +18,21 @@ To switch directories, type
     <samp>This text is meant to be treated as sample output from a computer program.</samp>
 </p>
 <div class="container" ng-controller="TableCtrl">
-    <table class="table table-striped">
+    <table class="table table-hover">
         <tbody>
             <th>#</th>
             <th>FirstName</th>
             <th>LastName</th>
             <th>UserName</th>
+            <th></th>
             <tr ng-repeat="item in dataSource">
                 <td ng-bind="$index+1"></td>
                 <td ng-bind="item.FirstName"></td>
                 <td ng-bind="item.LastName"></td>
                 <td ng-bind="item.UserName"></td>
+                <td>
+                    <button type="button" class="btn btn-default">Button</button>
+                </td>
             </tr>
         </tbody>
     </table>
