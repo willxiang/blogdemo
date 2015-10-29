@@ -40,10 +40,10 @@ angular
                 controller: 'TableCtrl',
                 controllerAs: 'table'
             })
-            .when('/modal', {
-                templateUrl: 'views/modal.html',
-                controller: 'ModalCtrl',
-                controllerAs: 'modal'
+            .when('/component', {
+                templateUrl: 'views/component.html',
+                controller: 'ComponentCtrl',
+                controllerAs: 'component'
             })
             .otherwise({
                 redirectTo: '/'

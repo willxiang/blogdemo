@@ -1,0 +1,75 @@
+<div class="blog-header">
+    <h1 class="blog-secondary-title">组件</h1>
+</div>
+<div class="container">
+    <uib-tabset>
+        <!--AlertTab-->
+        <uib-tab select="tabSelected()">
+            <uib-tab-heading>
+                <i class="glyphicon glyphicon-bell"></i> Alert
+            </uib-tab-heading>
+            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+            <button type="button" class='btn btn-default' ng-click="addAlert($index)">Add Alert</button>
+        </uib-tab>
+        <!--AlertTab-->
+        <!--Modal&Table-->
+        <uib-tab heading="Modal & Table & Pagination" active="true">
+            <div ng-controller="ModalTableCtrl">
+                <!--表格-->
+                <table class="table table-hover">
+                    <tbody>
+                        <th>#</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>UserName</th>
+                        <th></th>
+                        <tr ng-repeat="item in dataSource">
+                            <td ng-bind="item.Id"></td>
+                            <td ng-bind="item.FirstName"></td>
+                            <td ng-bind="item.LastName"></td>
+                            <td ng-bind="item.UserName"></td>
+                            <td>
+                                <a class="btn btn-default" data-toggle="modal" ng-click="open(item)">编辑</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--表格-->
+                <!--分页控件-->
+                <div style="margin:0 auto;text-align: center;">
+                    <uib-pagination items-per-page="pageSize" total-items="totalCount" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" ng-change="pageChanged()"></uib-pagination>
+                </div>
+                <!--分页控件-->
+            </div>
+            <!--下方脚本是Modal弹窗中显示的内容-->
+            <script type="text/ng-template" id="myModalContent.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">编辑数据</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="FirstNameTextBox{{$index+1}}">FirstName</label>
+                        <input type="text" class="form-control" id="FirstNameTextBox{{$index+1}}" ng-model="data.FirstName">
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="LastNameTextBox{{$index+1}}">LastName</label>
+                        <input type="text" class="form-control" id="LastNameTextBox{{$index+1}}" ng-model="data.LastName">
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="UserNameTextBox{{$index+1}}">UserName</label>
+                        <input type="text" class="form-control" id="UserNameTextBox{{$index+1}}" ng-model="data.UserName">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                </div>
+            </script>
+        </uib-tab>
+        <!--Modal&Table-->
+    </uib-tabset>
+</div>
