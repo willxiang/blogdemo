@@ -95,8 +95,6 @@ angular.module('willxiangApp').controller('ModalTableCtrl', function($scope, $ui
     }
 
     /*分页相关代码*/
-
-
     $scope.open = function(data) {
         //此方法，为点击 编辑 按钮后，所做的操作，显示Modal
         var modalInstance = $uibModal.open({
