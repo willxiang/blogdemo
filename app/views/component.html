@@ -8,12 +8,77 @@
             <uib-tab-heading>
                 <i class="glyphicon glyphicon-bell"></i> Alert
             </uib-tab-heading>
+            <br/>
+            <a href="javascript:;">数量：<span class="badge">{{alertCount}}</span></a>
+            <button class="btn btn-primary" type="button">
+                数量：<span class="badge">{{alertCount}}</span>
+            </button>
+            <br>
+            <br>
             <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
             <button type="button" class='btn btn-default' ng-click="addAlert($index)">Add Alert</button>
         </uib-tab>
         <!--AlertTab-->
+        <uib-tab heading="Popover" active="true">
+            <br>
+            <div class="panel panel-info" ng-controller="DataPickerCtrl">
+                <div class="panel-heading">DatePicker</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="input-group">
+                                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <span class="label label-info" ng-bind="dt"></span><br>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">Popover</div>
+                <div class="panel-body">
+                    <div>
+                        <button uib-popover="飞雪连天射白鹿" popover-trigger="mouseenter" type="button" class="btn btn-default">飞</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button uib-popover="笑书神侠倚碧鸳" popover-trigger="mouseenter" type="button" class="btn btn-default">笑</button>
+                    </div>
+                    <br>
+                    <div>
+                        <button popover-placement="left" uib-popover="欧阳锋" type="button" class="btn btn-default">西毒</button>
+                        <button popover-placement="bottom" uib-popover="段智兴" type="button" class="btn btn-default">南帝</button>
+                        <button popover-placement="top" uib-popover="洪七公" type="button" class="btn btn-default">北丐</button>
+                        <button popover-placement="right" uib-popover="黄药师" type="button" class="btn btn-default">东邪</button>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">Tooltip</div>
+                <div class="panel-body">
+                    <div>
+                        <a href="javascript:;" uib-tooltip="原名熊耀华">古龙</a>，籍贯江西，汉族江右民系。<a href="javascript:;" tooltip-placement="left" uib-tooltip="戊寅年">1938年</a><a href="javascript:;" tooltip-placement="right" uib-tooltip="双子座">6月7日</a>生于香港。
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-info" ng-controller="TypeaheadCtrl">
+                <div class="panel-heading">Typeahead</div>
+                <div class="panel-body">
+                    <div>
+                        <pre>Model: {{asyncSelected | json}}</pre>
+                        <!-- <input type="text" ng-model="asyncSelected" placeholder="请输入城市名" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control"> -->
+                        <input type="text" ng-model="asyncSelected" placeholder="请输入城市名，显示当前天气" uib-typeahead="weather for weather in getWeather($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
+                        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                        <div ng-show="noResults">
+                            <i class="glyphicon glyphicon-remove"></i> No Results Found
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </uib-tab>
         <!--Modal&Table-->
-        <uib-tab heading="Modal & Table & Pagination" active="true">
+        <uib-tab heading="Modal & Table & Pagination">
             <div ng-controller="ModalTableCtrl">
                 <!--表格-->
                 <table class="table table-hover">
