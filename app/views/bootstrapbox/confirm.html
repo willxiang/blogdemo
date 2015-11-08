@@ -1,0 +1,13 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="close()">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title" ng-bind="Title"></h4>
+</div>
+<div class="modal-body">
+	 <label ng-bind="Message"></label>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="confirm()">确定</button>
+      <button class="btn btn-warning" ng-click="close()">取消</button>
+</div>

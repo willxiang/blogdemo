@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+window.appModule = angular
     .module('willxiangApp', [
         'ngAnimate',
         'ngCookies',
@@ -17,8 +17,9 @@ angular
         'ngSanitize',
         'ngTouch',
         'ui.bootstrap'
-    ])
-    .config(function($routeProvider) {
+    ]);
+    
+    appModule.config(function($routeProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',

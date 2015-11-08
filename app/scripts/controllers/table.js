@@ -35,7 +35,7 @@
 
 
 
-angular.module('willxiangApp').controller('TableCtrl', function($scope, $uibModal, $log) {
+angular.module('willxiangApp').controller('TableCtrl', function($scope, $uibModal, $log, $http) {
 
 
     $scope.animationsEnabled = true;
@@ -57,6 +57,19 @@ angular.module('willxiangApp').controller('TableCtrl', function($scope, $uibModa
         LastName: "The Bird",
         UserName: "@twitter"
     }];
+
+    $scope.webData=[];
+
+    var url = "http://localhost:4246/Api/User";
+
+    $scope.getData = function() {
+        $http.get(url).success(function(data, status) {
+            // $scope.webData = data;
+            console.log(data);
+        }).error(function(data, status) {
+            console.log(data);
+        });
+    }
 
 
     $scope.open = function(data) {
@@ -100,8 +113,7 @@ angular.module('willxiangApp').controller('TableCtrl', function($scope, $uibModa
 
 angular.module('willxiangApp').controller('ModalInstanceCtrl', function($scope, $uibModalInstance, data) {
 
-    $scope.data = 
-    {
+    $scope.data = {
         Id: data.Id,
         FirstName: data.FirstName,
         LastName: data.LastName,
